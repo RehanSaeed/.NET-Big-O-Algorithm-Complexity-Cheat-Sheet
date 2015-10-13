@@ -3,8 +3,9 @@ Shows Big-O complexities of common algorithms used in .NET and Computer Science.
 
 ##View The Cheat Sheet
 
-#### [HTML Page](https://rawgit.com/rehansaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/master/Cheat%20Sheet.html)
+#### [HTML](https://rawgit.com/rehansaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/master/Cheat%20Sheet.html)
 #### [PDF](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/Cheat Sheet.pdf)
+#### [PNG](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/Cheat Sheet.png)
 
 ## Credits
 
