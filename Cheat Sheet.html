@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>.NET Big-O Algorithm Complexity Cheat Sheet</title>
+    <meta name="description" content="Big-O complexities of common algorithms used in .NET and Computer Science.">
+    <link rel="stylesheet" href="//ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+        .green {
+            background-color: #53d000;
+            text-align:center !important;
+            vertical-align:middle !important;
+        }
+        
+        .red {
+            background-color: #ff8989;
+            text-align:center !important;
+            vertical-align:middle !important;
+        }
+        
+        .yellow {
+            background-color: yellow;
+            text-align:center !important;
+            vertical-align:middle !important;
+        }
+        
+        .blank {
+            text-align:center !important;
+            vertical-align:middle !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Key</h1>
+        <table class="table table-bordered" id="legend">
+            <tbody>
+                <tr>
+                    <td class="green">Good</td>
+                    <td class="yellow">Fair</td>
+                    <td class="red">Poor</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="data-structures">Data Structures</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Data Structure</th>
+                    <th colspan="8">Time Complexity</th>
+                    <th>Space Complexity</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th colspan="4">Average</th>
+                    <th colspan="4">Worst</th>
+                    <th>Worst</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Indexing</th>
+                    <th>Search</th>
+                    <th>Insertion</th>
+                    <th>Deletion</th>
+                    <th>Indexing</th>
+                    <th>Search</th>
+                    <th>Insertion</th>
+                    <th>Deletion</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Array_data_structure">Basic Array</a> (<a href="https://msdn.microsoft.com/en-us/library/system.array%28v=vs.110%29.aspx">Array</a>)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="blank">-</td>
+                    <td class="blank">-</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="blank">-</td>
+                    <td class="blank">-</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Dynamic_array">Dynamic Array</a> (<a href="https://msdn.microsoft.com/en-us/library/6sh2ey19%28v=vs.110%29.aspx">List&lt;T&gt;</a> and <a href="https://msdn.microsoft.com/en-us/library/system.collections.arraylist%28v=vs.110%29.aspx">ArrayList</a>)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Singly-Linked List</a></td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Doubly_linked_list">Doubly-Linked List</a>  (<a href="https://msdn.microsoft.com/en-us/library/he2s3bh7%28v=vs.110%29.aspx">LinkedList&lt;T&gt;</a>)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Skip_list">Skip List</a></td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n log(n))</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Hash_table">Hash Table</a> (<a href="https://msdn.microsoft.com/en-us/library/bb359438%28v=vs.110%29.aspx">HashSet&lt;T&gt;</a> <a href="https://msdn.microsoft.com/en-us/library/xfhwa508%28v=vs.110%29.aspx">Dictionary&lt;TKey,&nbsp;TValue&gt;</a> and <a href="https://msdn.microsoft.com/en-us/library/system.collections.hashtable%28v=vs.110%29.aspx">Hashtable</a>)</td>
+                    <td class="blank">-</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="blank">-</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Binary Search Tree</a> (<a href="https://msdn.microsoft.com/en-us/library/f7fta44c(v=vs.110).aspx">SortedDictionary&lt;TKey, TValue&gt;</a>)</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td>Sorted Array using Binary Search (<a href="https://msdn.microsoft.com/en-us/library/ms132319(v=vs.110).aspx">SortedList&lt;TKey, TValue&gt;</a>)</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(?)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(?)</td>
+                    <td class="green">O(n)</td>
+                    <td class="green">O(n)</td>
+                    <td class="yellow">O(?)</td>
+                </tr>
+                <tr>
+                    <td><a href="https://en.wikipedia.org/wiki/Cartesian_tree">Cartesian Tree</a></td>
+                    <td class="blank">-</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="blank">-</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="https://en.wikipedia.org/wiki/Splay_tree">Splay Tree</a></td>
+                    <td class="blank">-</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="blank">-</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Red-black_tree">Red-Black Tree</a> (<a href="https://msdn.microsoft.com/en-us/library/dd412070.aspx">SortedSet&lt;T&gt;</a> No Duplicates)</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/AVL_tree">AVL Tree</a></td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/B_tree">B-Tree</a></td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="searching">Searching</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Data Structure</th>
+                    <th colspan="2">Time Complexity</th>
+                    <th colspan="3">Space Complexity</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Average</th>
+                    <th>Worst</th>
+                    <th>Worst</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Depth-first_search">Depth First Search (DFS)</a></td>
+                    <td class="blank">Graph of |V| vertices and |E| edges</td>
+                    <td class="blank">-</td>
+                    <td class="green">O(|E| + |V|)</td>
+                    <td class="green">O(|V|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Breadth-first_search">Breadth First Search (BFS)</a></td>
+                    <td class="blank">Graph of |V| vertices and |E| edges</td>
+                    <td class="blank">-</td>
+                    <td class="green">O(|E| + |V|)</td>
+                    <td class="green">O(|V|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Binary search</a> (<a href="https://msdn.microsoft.com/en-us/library/system.array.binarysearch%28v=vs.110%29.aspx">Array.BinarySearch</a> or <a href="https://msdn.microsoft.com/en-us/library/w4e7fxsh%28v=vs.110%29.aspx">List&lt;T&gt;.BinarySearch</a>)</td>
+                    <td class="blank">Sorted array of n elements</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(log(n))</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Brute-force_search">Linear (Brute Force)</a></td>
+                    <td class="blank">Array</td>
+                    <td class="red">O(n)</td>
+                    <td class="red">O(n)</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Shortest path by Dijkstra,<br>using a Min-heap as priority queue</a></td>
+                    <td class="blank">Graph with |V| vertices and |E| edges</td>
+                    <td class="yellow">O((|V| + |E|) log |V|)</td>
+                    <td class="yellow">O((|V| + |E|) log |V|)</td>
+                    <td class="yellow">O(|V|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Shortest path by Dijkstra,<br>using an unsorted array as priority queue</a></td>
+                    <td class="blank">Graph with |V| vertices and |E| edges</td>
+                    <td class="yellow">O(|V|^2)</td>
+                    <td class="yellow">O(|V|^2)</td>
+                    <td class="yellow">O(|V|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">Shortest path by Bellman-Ford</a></td>
+                    <td class="blank">Graph with |V| vertices and |E| edges</td>
+                    <td class="yellow">O(|V||E|)</td>
+                    <td class="yellow">O(|V||E|)</td>
+                    <td class="yellow">O(|V|)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="sorting">Sorting</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Data Structure</th>
+                    <th colspan="3">Time Complexity</th>
+                    <th colspan="3">Worst Case Auxiliary Space Complexity</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Best</th>
+                    <th>Average</th>
+                    <th>Worst</th>
+                    <th>Worst</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Quicksort">Quicksort</a> (<a href="https://msdn.microsoft.com/en-us/library/6tf1f0bc%28VS.80%29.aspx">Array.Sort</a> and <a href="https://msdn.microsoft.com/en-us/library/b0zbh7b6%28v=vs.110%29.aspx">List&lt;T&gt;.Sort</a> and <a href="https://msdn.microsoft.com/en-us/library/vstudio/bb534966%28v=vs.100%29.aspx">Enumerable.OrderBy&lt;TSource, TKey&gt</a>)</td>
+                    <td class="blank">Array</td>
+                    <td class="yellow">O(n log(n))</td>
+                    <td class="green">O(n log(n))</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="yellow">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Merge_sort">Mergesort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="yellow">O(n log(n))</td>
+                    <td class="green">O(n log(n))</td>
+                    <td class="green">O(n log(n))</td>
+                    <td class="red">O(n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Heapsort">Heapsort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="yellow">O(n log(n))</td>
+                    <td class="green">O(n log(n))</td>
+                    <td class="green">O(n log(n))</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Bubble_sort">Bubble Sort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="green">O(n)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="green">O(n)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Selection_sort">Select Sort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a data-original-title="Only for integers with range k" rel="tooltip" href="http://en.wikipedia.org/wiki/Bucket_sort">Bucket Sort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="green">O(n+k)</td>
+                    <td class="green">O(n+k)</td>
+                    <td class="red">O(n^2)</td>
+                    <td class="yellow">O(nk)</td>
+                </tr>
+                <tr>
+                    <td><a data-original-title="Constant number of digits 'k'" rel="tooltip" href="http://en.wikipedia.org/wiki/Radix_sort">Radix Sort</a></td>
+                    <td class="blank">Array</td>
+                    <td class="green">O(nk)</td>
+                    <td class="green">O(nk)</td>
+                    <td class="green">O(nk)</td>
+                    <td class="yellow">O(n+k)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="heaps">Heaps</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Heaps</th>
+                    <th colspan="7">Time Complexity</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>Heapify</th>
+                    <th>Find Max</th>
+                    <th>Extract Max</th>
+                    <th>Increase Key</th>
+                    <th>Insert</th>
+                    <th>Delete</th>
+                    <th>Merge</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Linked_list">Linked List (sorted)</a></td>
+                    <td class="blank">-</td> <!-- heapify -->
+                    <td class="green">O(1)</td> <!-- Find max -->
+                    <td class="green">O(1)</td> <!-- Extract max -->
+                    <td class="red">O(n)</td> <!-- Increase -->
+                    <td class="red">O(n)</td> <!-- insert -->
+                    <td class="green">O(1)</td> <!-- delete -->
+                    <td class="red">O(m+n)</td> <!-- merge -->
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Linked_list">Linked List (unsorted)</a></td>
+                    <td class="blank">-</td> <!-- heapify -->
+                    <td class="red">O(n)</td> <!-- Find max -->
+                    <td class="red">O(n)</td> <!-- Extract max -->
+                    <td class="green">O(1)</td> <!-- Increase -->
+                    <td class="green">O(1)</td> <!-- insert -->
+                    <td class="green">O(1)</td> <!-- delete -->
+                    <td class="green">O(1)</td> <!-- merge -->
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Binary_heap">Binary Heap</a></td>
+                    <td class="yellow">O(n)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="red">O(m+n)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Binomial_heap">Binomial Heap</a></td>
+                    <td class="blank">-</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                    <td class="yellow">O(log(n))</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Fibonacci_heap">Fibonacci Heap</a></td>
+                    <td class="blank">-</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(log(n))*</td>
+                    <td class="green">O(1)*</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(log(n))*</td>
+                    <td class="green">O(1)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="graphs">Graphs</h2>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Node / Edge Management</th>
+                    <th>Storage</th>
+                    <th>Add Vertex</th>
+                    <th>Add Edge</th>
+                    <th>Remove Vertex</th>
+                    <th>Remove Edge</th>
+                    <th>Query</th>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Adjacency_list">Adjacency list</a></td>
+                    <td class="yellow">O(|V|+|E|)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(|V| + |E|)</td>
+                    <td class="yellow">O(|E|)</td>
+                    <td class="yellow">O(|V|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Incidence_list">Incidence list</a></td>
+                    <td class="yellow">O(|V|+|E|)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                    <td class="yellow">O(|E|)</td>
+                    <td class="yellow">O(|E|)</td>
+                    <td class="yellow">O(|E|)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Adjacency_matrix">Adjacency matrix</a></td>
+                    <td class="red">O(|V|^2)</td>
+                    <td class="red">O(|V|^2)</td>
+                    <td class="green">O(1)</td>
+                    <td class="red">O(|V|^2)</td>
+                    <td class="green">O(1)</td>
+                    <td class="green">O(1)</td>
+                </tr>
+                <tr>
+                    <td><a href="http://en.wikipedia.org/wiki/Incidence_matrix">Incidence matrix</a></td>
+                    <td class="red">O(|V| &#8901; |E|)</td>
+                    <td class="red">O(|V| &#8901; |E|)</td>
+                    <td class="red">O(|V| &#8901; |E|)</td>
+                    <td class="red">O(|V| &#8901; |E|)</td>
+                    <td class="red">O(|V| &#8901; |E|)</td>
+                    <td class="yellow">O(|E|)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="chart">Big-O Complexity Chart</h2>
+        <img src="big-o-complexity.png" alt="Big O Complexity Graph" title="Big O Complexity Graph">
+
+    </div>
+
+</body>
+</html>
