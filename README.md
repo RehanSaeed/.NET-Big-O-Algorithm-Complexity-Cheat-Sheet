@@ -7,6 +7,8 @@ Shows [Big-O](https://en.wikipedia.org/wiki/Big_O_notation) time and space compl
 #### [PDF](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/master/Cheat%20Sheet.pdf)
 #### [PNG](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/master/Cheat%20Sheet.png)
 
+![.NET Big-O Algorithm Complexity Cheat Sheet](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/master/Cheat%20Sheet.png)
+
 ## Credits
 
 All credit goes to the creator of the Big-O Algorithm Complexity Cheat Sheet [Eric Rowell](https://twitter.com/ericdrowell) and the many contributors to it. You can find the original [here](http://bigocheatsheet.com/). I simply added .NET specific bits to it.
