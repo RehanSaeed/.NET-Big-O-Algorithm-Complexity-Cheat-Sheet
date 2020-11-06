@@ -3,11 +3,11 @@ Shows [Big-O](https://en.wikipedia.org/wiki/Big_O_notation) time and space compl
 
 ## View The Cheat Sheet
 
-#### [HTML](Cheat%20Sheet.html)
-#### [PDF](Cheat%20Sheet.pdf)
-#### [PNG](Cheat%20Sheet.png)
+#### [HTML](https://rawgit.com/rehansaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/main/Cheat%20Sheet.html)
+#### [PDF](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/main/Cheat%20Sheet.pdf)
+#### [PNG](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/main/Cheat%20Sheet.png)
 
-![.NET Big-O Algorithm Complexity Cheat Sheet](Cheat%20Sheet.png)
+![.NET Big-O Algorithm Complexity Cheat Sheet](https://github.com/RehanSaeed/.NET-Big-O-Algorithm-Complexity-Cheat-Sheet/blob/main/Cheat%20Sheet.png)
 
 ## Credits
 
